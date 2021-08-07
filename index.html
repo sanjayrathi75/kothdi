@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>let Play</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="text" placeholder="सभी नाम">
+        <button onclick="game()">Click</button>
+        <h1></h1>
+        <h2></h2>
+        <script>
+            function game(){
+                let value = document.querySelector('input').value;
+                value = value.toUpperCase();
+                if(value.length === 0){
+                    document.querySelector('h1').innerText= "उफ़! अमान्य नाम??";
+                }
+                let person = value.split(' ');
+                let random = Math.floor(Math.random() * person.length)
+                let intervel = setInterval(()=>{
+                    let r = Math.floor(Math.random() * person.length)
+                    document.querySelector('h1').innerText= person[r]
+                },200)
+
+                setTimeout(()=>{
+                    clearInterval(intervel);
+                    document.querySelector('h1').style.color = "red";
+                    document.querySelector('h1').innerText= person[random];
+                    document.querySelector('h2').innerText= "जल्दी जा 😜";
+                },7000)
+            }
+        </script>
+    </body>
+</html>
